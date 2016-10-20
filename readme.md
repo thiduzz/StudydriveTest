@@ -1,4 +1,4 @@
-# StudydriveTest - 
+# StudydriveTest - Login/Register Task
 
 This small application was developed as a demonstration for Studydrive.net and it covers the following scope:
 
