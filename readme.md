@@ -11,6 +11,8 @@ This small application was developed as a demonstration for Studydrive.net and i
 - Gravatar integrated
 - Amazon S3 as a repository for uploaded avatar images
 
+##[Production Demo](http://studydrive.vizad.com.br)
+
 #Technologies used
 
 - Laravel 5.3
@@ -23,6 +25,7 @@ This small application was developed as a demonstration for Studydrive.net and i
 - .env (for environment variable management)
 - Vagrant 1.8.4 (with the Homestead box)
 - Virtual Box 5.0.24
+- Forge Laravel (production server management)
 
 #Installation Instructions
 - Before anything you will need to install Vagrant (with Homestead), VirtualBox, NPM, Bower, Yarn and Gulp
