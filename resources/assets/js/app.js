@@ -16,8 +16,8 @@ require('./bootstrap');
 Vue.component('gravatar', require('./components/Gravatar.vue'));
 Vue.component('logged-panel', require('./components/Logged.vue'));
 Vue.component('login-register', require('./components/LoginRegister.vue'));
-Vue.config.devtools = true;
-Vue.config.debug = true;
+Vue.config.devtools = false;
+Vue.config.debug = false;
 const app = new Vue({
     el: '#app'
 });
