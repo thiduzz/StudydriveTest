@@ -1,28 +1,72 @@
-# Laravel PHP Framework
+# StudydriveTest - 
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+This small application was developed as a demonstration for Studydrive.net and it covers the following scope:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+- Simultaneous Register/Login (with automatic creation on failed login and the suggested validation)
+- Account Confirmation
+- Password Recover
+- Access control with middleware
+- Throttling of logins and activation email resend
+- Logout
+- Gravatar integrated
+- Amazon S3 as a repository for uploaded avatar images
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+#Technologies used
 
-## Official Documentation
+- Laravel 5.3
+- VueJS 2.0
+- MySQL Database
+- Yarn, Bower and NPM (Dependency Managers)
+- Amazon AWS (S3)
+- Gravatar
+- Gulp (Laravel Elixir and Webpack)
+- .env (for environment variable management)
+- Vagrant 1.8.4 (with the Homestead box)
+- Virtual Box 5.0.24
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+#Installation Instructions
+- Before anything you will need to install Vagrant (with Homestead), VirtualBox, NPM, Bower, Yarn and Gulp
+- On your Homestead directory create a folder called "sites" 
+- Clone this repository into a folder called "studydrive" inside the "sites" folder
+- On a terminal run the command "composer install" on the root folder of this project
+- On a terminal run the command "yarn" on the root folder of this project (this should install all the NPM packages)
+- On a terminal run the command "bower install" on the root folder of this project
+- Add the following lines in your Homestead.yaml
 
-## Contributing
+```html
+ip: "192.168.10.10"
+memory: 2048
+cpus: 1
+provider: virtualbox
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+authorize: C:/Users/YourUser/.ssh/id_rsa.pub
 
-## Security Vulnerabilities
+keys:
+    - C:/Users/YourUser/.ssh/id_rsa
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+folders:
+    - map: C:/Users/YourUser/HomesteadRootDirectory/sites
+      to: /home/vagrant/sites
 
-## License
+sites:
+    - map: studydrive.app
+      to: /home/vagrant/sites/studydrive/public
+      
+databases:
+    - studydrive
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
-# StudydriveTest
+variables:
+    - key: APP_ENV
+      value: local
+```
+
+- On a Win32 system add the following line to your hosts file (usually on C:\Windows\System32\drivers\etc directory) and save
+
+```html
+192.168.10.10 studydrive.app
+```
+- CD into your Homestead directory and run the command "vagrant up" to run the server
+- Once the server is up, run "vagrant ssh" and log with your SSH access
+- Change the .env according to your credentials
+- CD into the sites/studydrive and run the command "php artisan migrate" to migrate the database schema
+- You are ready to go, access the application on: http://studydrive.app
