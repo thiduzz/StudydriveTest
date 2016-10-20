@@ -30,7 +30,7 @@ class Confirmation extends Mailable
      */
     public function build()
     {
-        $this->subject('User Activation -'. config('app.name', 'Studydrive Test'));
+        $this->subject('User Activation - '. config('app.name', 'Studydrive Test'));
         return $this->view('mail.confirmation')->with([
             'link' => $this->link
         ]);

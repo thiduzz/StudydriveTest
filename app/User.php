@@ -6,6 +6,15 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Thomaswelton\LaravelGravatar\Facades\Gravatar;
 
+/**
+ * This model is the basis of the whole app - the user is the representation of one row in the users table
+ *
+ * Class User
+ * @package App
+ * @author  Thiago Mello
+ * @see     \Illuminate\Foundation\Auth\User
+ * @since   1.0
+ */
 class User extends Authenticatable
 {
     use Notifiable;
@@ -28,6 +37,10 @@ class User extends Authenticatable
         'password', 'remember_token','activation_token'
     ];
 
+    /**
+     * Override the avatar_url value to format it to the file repository url format
+     * @return array
+     */
     public function toArray()
     {
         $array = parent::toArray();
@@ -35,6 +48,10 @@ class User extends Authenticatable
         return $array;
     }
 
+    /**
+     * Format the avatar_url parameter
+     * @return string
+     */
     public function getAvatarLinkAttribute()
     {
         if($this->avatar_url != null)

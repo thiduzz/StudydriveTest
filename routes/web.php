@@ -25,7 +25,7 @@ Route::post('/password/reset',['middleware'=>'guest','uses'=> '\App\Http\Control
 Route::get('/password/reset/{token}',['middleware'=>'guest','uses'=> '\App\Http\Controllers\Auth\ResetPasswordController@showResetForm']);
 
 /**Home and Profile routes**/
-Route::get('/home', 'HomeController@index')->middleware('auth');
+Route::get('/home', 'UserController@index')->middleware('auth');
 Route::post('/profile/update/{id}', 'UserController@update')->middleware('auth');
 
 /**Activation routes**/
