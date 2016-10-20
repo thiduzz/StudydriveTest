@@ -90,7 +90,7 @@ class LoginRegisterController extends Controller
         if(User::where($this->username(),$request->all()[$this->username()])->count() > 0)
         {
             $this->incrementLoginAttempts($request);
-            return new JsonResponse(['errors' => [Lang::get('messages.account_active_fail2')]], 422);
+            return new JsonResponse(['errors' => [Lang::get('messages.incorrect_password')]], 422);
         }
         event(new Registered($user = $this->createNewUser($request->all())));
         $this->sendConfirmation($request, $user);
