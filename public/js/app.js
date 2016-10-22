@@ -54637,10 +54637,6 @@ module.exports={render:function (){with(this) {
       "value": _s(login.password)
     },
     on: {
-      "keyup": function($event) {
-        if ($event.keyCode !== 13) return;
-        attemptLoginRegister($event)
-      },
       "input": function($event) {
         if ($event.target.composing) return;
         login.password = $event.target.value
