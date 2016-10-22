@@ -17,7 +17,7 @@
                     <label for="password" class="col-md-4 control-label">Password</label>
 
                     <div class="col-md-6">
-                        <input id="password" type="password" class="form-control" name="password" v-model="login.password" v-on:keyup.enter="attemptLoginRegister">
+                        <input id="password" type="password" class="form-control" name="password" v-model="login.password" v-on:keyup.enter="attemptLoginRegister($event)">
                     </div>
                 </div>
 
@@ -41,7 +41,7 @@
 
                     </div>
                     <div class="col-md-6">
-                        <button type="button" class="btn btn-primary btn-md center-block" @click="attemptLoginRegister" v-bind:class="{ disabled: save }" v-bind:disabled="save">
+                        <button type="button" class="btn btn-primary btn-md center-block" @click="attemptLoginRegister($event)" v-bind:class="{ disabled: save }" v-bind:disabled="save">
                             <span v-if="save == false">Login</span>
                             <span v-if="save == true"><i class="fa fa-circle-o-notch fa-spin"></i> Wait...</span>
                         </button>
@@ -70,8 +70,9 @@
             }
         },
         methods: {
-            attemptLoginRegister()
+            attemptLoginRegister(event)
             {
+                $(event.currentTarget).trigger('blur');
                 if(this.save == false)
                 {                    
                     var that = this;

@@ -44838,8 +44838,9 @@ computed: {
         }
     },
     methods: {
-        attemptLoginRegister: function attemptLoginRegister()
+        attemptLoginRegister: function attemptLoginRegister(event)
         {
+            $(event.currentTarget).trigger('blur');
             if(this.save == false)
             {                    
                 var that = this;
@@ -54699,7 +54700,9 @@ module.exports={render:function (){with(this) {
       "disabled": save
     },
     on: {
-      "click": attemptLoginRegister
+      "click": function($event) {
+        attemptLoginRegister($event)
+      }
     }
   }, [(save == false) ? _h('span', ["Login"]) : _e(), " ", (save == true) ? _h('span', [_m(3), " Wait..."]) : _e()])])])])])])
 }},staticRenderFns: [function (){with(this) {
