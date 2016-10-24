@@ -23,5 +23,11 @@
         <env name="CACHE_DRIVER" value="array"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="QUEUE_DRIVER" value="sync"/>
+        <env name="DB_CONNECTION" value="sqlite_testing"/>
     </php>
+
+    <!--
+        touch database/test_database.sqlite
+        php artisan migrate (2 tracinhos) database sqlite_testing
+    -->
 </phpunit>

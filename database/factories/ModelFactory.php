@@ -20,5 +20,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+        'avatar_url'=>null,
+        'activation_token'=>hash_hmac('sha256', str_random(60), config('app.key'))
     ];
 });

@@ -60,4 +60,11 @@ class User extends Authenticatable
         }
         return '';
     }
+
+    public function activate()
+    {
+        $this->active = 1;
+        $this->save();
+        return true;
+    }
 }

@@ -138,8 +138,7 @@ class UserController extends Controller
         {
             if($user->active == 0)
             {
-                $user->active = 1;
-                $user->save();
+                $user->activate();
                 if(Auth::check()){
                     $request->session()->put('activated_success', Lang::get('messages.activated_message',['email'=>$user->email]));
                 }else{
